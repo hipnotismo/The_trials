@@ -2,7 +2,8 @@ function love.load()
 x = 100
 end
 
-function love.update()
+function love.update(dt)
+    x = x + 5 * dt
 end
 
 function love.draw()
