@@ -169,6 +169,7 @@ function love.update(dt)
         if checkCollision(player, goal1) then
             playerPosX = player.x
             playerPosY = player.y
+            screen = 2
         end
     end
 --level 2
@@ -285,6 +286,16 @@ function love.update(dt)
 end
 
 function love.draw()
+
+    if screen == 0 then 
+        love.graphics.print("Bienvenid al gran desafio para salvar Image Campus", 100, 100)
+        love.graphics.print("Un profesor de programacion sin corazon esta planeand o en hacer una jam de pascal", 100, 150)
+        love.graphics.print("Esquiva a los coloridos guardias del country en donde vive y panta el c4 casero", 100, 175)
+        love.graphics.print("Salva a la cursa del terro de pascar y seras recordado como un heroe por diez mil años", 100, 200)
+        love.graphics.print("Usted sera representa por el colo amarillo y su meta por el color rojo, todo el resto es enemigo", 100, 225)
+        love.graphics.print("Use las teclas direccionales para moverse y esquivar a la seguridad" , 100, 250)
+        love.graphics.print("Caundo se seinta listo presione espacio para empezar",100,275)
+    end
     if screen == 1 then
         love.graphics.setColor(255,100,0)
         love.graphics.rectangle("fill", player.x, player.y, player.width, player.height)
