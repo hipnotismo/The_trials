@@ -342,4 +342,11 @@ function love.draw()
     love.graphics.rectangle("fill", goal2.x, goal2.y, goal2.width, goal2.height)
    
     end
+
+    if screen == 3 then
+        love.graphics.print("Lograste plantar los explosivos en la casa del profe y salvar a tu cursada de la jam de pascal",100,100)
+        love.graphics.print("Los noticieros le estan echando la culpa a Macri pero tus campañeros saben la verdad",100,125)
+        love.graphics.print("Tu nombre es venerado en las aulas de Image Campus por  diez mil años",100,150)
+
+    end
 end
