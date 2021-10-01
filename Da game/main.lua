@@ -1,4 +1,6 @@
 function love.load()
+    --screen control
+    screen = 0
     --player 
     playerX = 10
     playerY = 10
@@ -12,13 +14,16 @@ function love.load()
 end
 
 function love.update(dt)
-    if love.keyboard.isDown("right") then
-    playerX = playerX + 100 * dt
-end
+    if screen == 1 then
+            if love.keyboard.isDown("right") then
+            playerX = playerX + 100 * dt
+        end
+    end
 end
 
 function love.draw()
-    love.graphics.rectangle("line", playerX, playerY, playerWith, playerHight)
-    love.graphics.rectangle("line", enemy1X, enemy1Y, enemy1With, enemy1Hight)
-
+    if screen == 1 then
+        love.graphics.rectangle("line", playerX, playerY, playerWith, playerHight)
+        love.graphics.rectangle("line", enemy1X, enemy1Y, enemy1With, enemy1Hight)
+    end
 end
