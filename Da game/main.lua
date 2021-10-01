@@ -281,6 +281,9 @@ function love.update(dt)
             player.x = playerPosX
             player.y = playerPosY
         end
+        if checkCollision(player, goal2) then
+            screen = 3
+        end
         print (enemy4.x)
     end
 end
