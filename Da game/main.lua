@@ -28,7 +28,13 @@ function love.load()
     width = 700
     height = 500
     direction1 = 0
-
+    direction2 = 0
+    direction3 = 0
+    
+    direction4 = 0
+    direction5 = 0
+    direction6 = 0
+    
     playerPosX = 10
     playerPosY = 10
 
@@ -60,8 +66,38 @@ function love.load()
         height = 100
     }
     enemy4 = {
-        x = 600,
+        x = 0,
+        y = 100,
+        width = 100,
+        height = 100
+    }
+    enemy5 = {
+        x = 350,
         y = 200,
+        width = 100,
+        height = 100
+    }
+    enemy6 = {
+        x = 0,
+        y = 300,
+        width = 100,
+        height = 100
+    }
+    enemy7 = {
+        x = 350,
+        y = 100,
+        width = 100,
+        height = 100
+    }
+    enemy8 = {
+        x = 700,
+        y = 200,
+        width = 100,
+        height = 100
+    }
+    enemy9 = {
+        x = 350,
+        y = 300,
         width = 100,
         height = 100
     }
@@ -72,12 +108,18 @@ function love.load()
         width = 50,
         height = 50
     }
+    goal2 = {
+        x = 10,
+        y = 10,
+        width = 50,
+        height = 50
+    }
 end
 
 function love.update(dt)
 
     
-
+--preventing movement of player in menu
     if screen ~= 0 then
         if player.x < width then
             if love.keyboard.isDown("right") then
@@ -103,6 +145,8 @@ function love.update(dt)
             end
         end
     end
+
+--collisions of player and enemy level 1
     if screen == 1 then
 
         if checkCollision(player, enemy1) then
@@ -117,34 +161,121 @@ function love.update(dt)
             player.x = playerPosX
             player.y = playerPosY
         end
+--collision with goal
         if checkCollision(player, goal1) then
             playerPosX = player.x
             playerPosY = player.y
         end
     end
-    if screen == 2 then
+--level 2
 
+    if screen == 2 then
+--movement of the enemies
+--left side
         if direction1 == 0 then
             enemy4.x = enemy4.x + speed * dt
-            if enemy4.x > 800 then 
+            if enemy4.x > 350 then 
                 direction1 = 1
-                --enemy4.x = enemy4.x - speed * dt
-
             end
         end
-
         if direction1 == 1 then
             enemy4.x = enemy4.x - speed * dt
             if enemy4.x < 0 then 
                 direction1 = 0
             end
         end
-       -- if enemy4.x < 800 and  then
-         --   enemy4.x = enemy4.x + speed * dt 
-      --  end
-        --if enemy4.x > 0 then
-          --  enemy4.x = enemy4.x - speed * dt 
-       -- end
+        --
+        if direction2 == 0 then
+            enemy5.x = enemy5.x + speed * dt
+            if enemy5.x > 350 then 
+                direction2 = 1
+            end
+        end
+        if direction2 == 1 then
+            enemy5.x = enemy5.x - speed * dt
+            if enemy5.x < 0 then 
+                direction2 = 0
+            end
+        end
+        --
+        if direction3 == 0 then
+            enemy6.x = enemy6.x + speed * dt
+            if enemy6.x > 350 then 
+                direction3 = 1
+            end
+        end
+        if direction3 == 1 then
+            enemy6.x = enemy6.x - speed * dt
+            if enemy6.x < 0 then 
+                direction3 = 0
+            end
+        end
+--right side
+         --
+        if direction4 == 0 then
+            enemy7.x = enemy7.x + speed * dt
+            if enemy7.x > 800 then 
+                direction4 = 1
+            end
+        end
+        if direction4 == 1 then
+            enemy7.x = enemy7.x - speed * dt
+            if enemy7.x < 350 then 
+                direction4 = 0
+            end
+        end
+        --
+        if direction5 == 0 then
+            enemy8.x = enemy8.x + speed * dt
+            if enemy8.x > 800 then 
+                direction5 = 1
+            end
+        end
+        if direction5 == 1 then
+            enemy8.x = enemy8.x - speed * dt
+            if enemy8.x < 350 then 
+                direction5 = 0
+            end
+        end
+        --
+        if direction6 == 0 then
+            enemy9.x = enemy9.x + speed * dt
+            if enemy9.x > 800 then 
+                direction6 = 1
+            end
+        end
+        if direction6 == 1 then
+            enemy9.x = enemy9.x - speed * dt
+            if enemy9.x < 350 then 
+                direction6 = 0
+            end
+        end
+        --
+--player collision level 2
+       if checkCollision(player, enemy4) then
+            player.x = playerPosX
+            player.y = playerPosY
+        end
+        if checkCollision(player, enemy5) then
+            player.x = playerPosX
+            player.y = playerPosY
+        end
+        if checkCollision(player, enemy6) then
+            player.x = playerPosX
+            player.y = playerPosY
+        end
+        if checkCollision(player, enemy7) then
+            player.x = playerPosX
+            player.y = playerPosY
+        end
+        if checkCollision(player, enemy8) then
+            player.x = playerPosX
+            player.y = playerPosY
+        end
+        if checkCollision(player, enemy9) then
+            player.x = playerPosX
+            player.y = playerPosY
+        end
         print (enemy4.x)
     end
 end
@@ -164,7 +295,7 @@ function love.draw()
         love.graphics.rectangle("fill", enemy3.x, enemy3.y, enemy3.width, enemy3.height)
       
         love.graphics.setColor(255,0,0)
-        love.graphics.rectangle("line", goal1.x, goal1.y, goal1.width, goal1.height)
+        love.graphics.rectangle("fill", goal1.x, goal1.y, goal1.width, goal1.height)
     end
     
     if screen == 2 then
@@ -172,13 +303,25 @@ function love.draw()
     love.graphics.rectangle("fill", player.x, player.y, player.width, player.height)
     
     love.graphics.setColor(0,255,0)
-    love.graphics.rectangle("line", enemy4.x, enemy4.y, enemy4.width, enemy4.height)
+    love.graphics.rectangle("fill", enemy4.x, enemy4.y, enemy4.width, enemy4.height)
     
     love.graphics.setColor(0,0,255)
-    --love.graphics.rectangle("fill", enemy5.x, enemy5.y, enemy5.width, enemy5.height)
+    love.graphics.rectangle("fill", enemy5.x, enemy5.y, enemy5.width, enemy5.height)
     
     love.graphics.setColor(255,0,0)
-   -- love.graphics.rectangle("fill", enemy6.x, enemy6.y, enemy6.width, enemy6.height)
+    love.graphics.rectangle("fill", enemy6.x, enemy6.y, enemy6.width, enemy6.height)
  
+    love.graphics.setColor(0,255,0)
+    love.graphics.rectangle("fill", enemy7.x, enemy7.y, enemy7.width, enemy7.height)
+    
+    love.graphics.setColor(0,0,255)
+    love.graphics.rectangle("fill", enemy8.x, enemy8.y, enemy8.width, enemy8.height)
+    
+    love.graphics.setColor(255,0,0)
+    love.graphics.rectangle("fill", enemy9.x, enemy9.y, enemy9.width, enemy9.height)
+ 
+    love.graphics.setColor(255,0,0)
+    love.graphics.rectangle("fill", goal2.x, goal2.y, goal2.width, goal2.height)
+   
     end
 end
