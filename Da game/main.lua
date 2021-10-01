@@ -65,41 +65,42 @@ function love.load()
         width = 600,
         height = 100
     }
+--level 2
     enemy4 = {
         x = 0,
         y = 100,
-        width = 100,
-        height = 100
+        width = 75,
+        height = 75
     }
     enemy5 = {
         x = 350,
         y = 200,
-        width = 100,
-        height = 100
+        width = 75,
+        height = 75
     }
     enemy6 = {
         x = 0,
         y = 300,
-        width = 100,
-        height = 100
+        width = 75,
+        height = 75
     }
     enemy7 = {
         x = 350,
         y = 100,
-        width = 100,
-        height = 100
+        width = 75,
+        height = 75
     }
     enemy8 = {
         x = 700,
         y = 200,
-        width = 100,
-        height = 100
+        width = 75,
+        height = 75
     }
     enemy9 = {
         x = 350,
         y = 300,
-        width = 100,
-        height = 100
+        width = 75,
+        height = 75
     }
     --goal
     goal1 = {
