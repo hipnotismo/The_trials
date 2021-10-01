@@ -21,7 +21,7 @@ end
 
 function love.load()
     --screen control
-    screen = 2
+    screen = 0
     intro = 0
     --variables
     speed = 250
@@ -119,7 +119,10 @@ end
 
 function love.update(dt)
 
-    
+--intro
+        if love.keyboard.isDown("space") then
+            screen = 1
+        end
 --preventing movement of player in menu
     if screen ~= 0 then
         if player.x < width then
